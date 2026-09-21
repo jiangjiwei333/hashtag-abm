@@ -1,7 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper below."
-title: "Agent-based model with decaying attention reproducing hashtag scaling laws: code"
+title: 'Code for "Agent-Based Model with Decaying Attention Reproducing Hashtag Scaling Laws: Random Multiplicative Growth as a Bridge"'
 type: software
+version: 1.0.0
+date-released: 2026-09-21
+doi: 10.5281/zenodo.22873307   # concept DOI (always resolves to the latest release); v1.0.0 = 10.5281/zenodo.22873308
 authors:
   - family-names: Jiang
     given-names: Jiwei J.
@@ -19,7 +22,7 @@ repository-code: "https://github.com/jiangjiwei333/hashtag-abm"
 license: MIT
 preferred-citation:
   type: article
-  title: "Agent-based model with decaying attention reproducing hashtag scaling laws: random multiplicative growth as a bridge"
+  title: "Agent-Based Model with Decaying Attention Reproducing Hashtag Scaling Laws: Random Multiplicative Growth as a Bridge"
   authors:
     - family-names: Jiang
       given-names: Jiwei J.

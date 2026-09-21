@@ -1,9 +1,8 @@
-# Agent-based model with decaying attention reproducing hashtag scaling laws
+# Code for "Agent-Based Model with Decaying Attention Reproducing Hashtag Scaling Laws: Random Multiplicative Growth as a Bridge"
 
-Code for *Agent-based model with decaying attention reproducing hashtag scaling laws: random multiplicative
-growth as a bridge* (Jiang, Yamada, Takayasu & Takayasu, 2026; under review).
+Code for *Agent-Based Model with Decaying Attention Reproducing Hashtag Scaling Laws: Random Multiplicative Growth as a Bridge* (Jiang, Yamada, Takayasu & Takayasu, 2026; under review).
 
-* Code: this repository (archived release: Zenodo DOI to be assigned)
+* Code: this repository; the release used for the paper (v1.0.0) is archived on Zenodo, https://doi.org/10.5281/zenodo.22873308 (concept DOI https://doi.org/10.5281/zenodo.22873307)
 * Data: the processed tables are archived separately on Zenodo (DOI to be assigned); see `data/README.md`
   for the file list and where to place them. The raw tweets are not redistributed.
 
