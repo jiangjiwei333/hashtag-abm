@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Agent-based model with decaying attention reproducing hashtag scaling laws: code"
+type: software
+authors:
+  - family-names: Jiang
+    given-names: Jiwei J.
+    affiliation: "School of Computing, Institute of Science Tokyo"
+  - family-names: Yamada
+    given-names: Kenta
+    affiliation: "Faculty of Global and Regional Studies, University of the Ryukyus"
+  - family-names: Takayasu
+    given-names: Hideki
+    affiliation: "School of Computing, Institute of Science Tokyo"
+  - family-names: Takayasu
+    given-names: Misako
+    affiliation: "School of Computing, Institute of Science Tokyo"
+repository-code: "https://github.com/<USER>/<REPO>"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Agent-based model with decaying attention reproducing hashtag scaling laws: random multiplicative growth as a bridge"
+  authors:
+    - family-names: Jiang
+      given-names: Jiwei J.
+    - family-names: Yamada
+      given-names: Kenta
+    - family-names: Takayasu
+      given-names: Hideki
+    - family-names: Takayasu
+      given-names: Misako
+  year: 2026
+  # arXiv identifier / journal DOI to be filled in once available
+  url: "https://arxiv.org/abs/XXXX.XXXXX"

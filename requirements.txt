@@ -1,0 +1,12 @@
+numpy>=1.24
+pandas>=2.0
+scipy>=1.10
+statsmodels>=0.14
+matplotlib>=3.7
+seaborn>=0.12
+tqdm>=4.65
+jupyter
+
+# the processed .pkl tables were written with an older pandas whose tz-aware
+# timestamps reference pytz; unpickling them needs the module present
+pytz

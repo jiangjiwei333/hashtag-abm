@@ -1,0 +1,29 @@
+# build / run artefacts
+simulation/modules/simulation
+simulation/simulation_results/
+simulation/simulation_logs/
+simulation/temp_scripts/
+figures/output/
+results/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+*.log
+.venv/
+env/
+
+# data (distributed separately, see data/README.md)
+data/*.pkl
+data/derived/
+data/restricted/
+simulation/real_data/retweet_network/*.csv
+simulation/real_data/retweet_network/*.txt
+simulation/real_data/retweet_network/*.txt.gz
+simulation/real_data/*.pkl
+
+# TeX build artefacts
+*.synctex.gz
+*.aux
+*.bbl
+*.blg
