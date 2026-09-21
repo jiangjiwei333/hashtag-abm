@@ -15,7 +15,7 @@ authors:
   - family-names: Takayasu
     given-names: Misako
     affiliation: "School of Computing, Institute of Science Tokyo"
-repository-code: "https://github.com/<USER>/<REPO>"
+repository-code: "https://github.com/jiangjiwei333/hashtag-abm"
 license: MIT
 preferred-citation:
   type: article
@@ -30,5 +30,5 @@ preferred-citation:
     - family-names: Takayasu
       given-names: Misako
   year: 2026
-  # arXiv identifier / journal DOI to be filled in once available
-  url: "https://arxiv.org/abs/XXXX.XXXXX"
+  status: submitted
+  notes: "Manuscript under review; the journal DOI will be added on publication."
