@@ -2,7 +2,7 @@
 
 Code for *Agent-Based Model with Decaying Attention Reproducing Hashtag Scaling Laws: Random Multiplicative Growth as a Bridge* (Jiang, Yamada, Takayasu & Takayasu, 2026; under review).
 
-* Code: this repository; the release used for the paper (v1.0.0) is archived on Zenodo, https://doi.org/10.5281/zenodo.22873308 (concept DOI https://doi.org/10.5281/zenodo.22873307)
+* Code: this repository; releases are archived on Zenodo under the concept DOI https://doi.org/10.5281/zenodo.22873307 (always resolves to the latest release). The paper cites the version DOI of the release it used.
 * Data: the processed tables are available from the corresponding author on request (see `data/README.md`)
   for the file list and where to place them. The raw tweets are not redistributed.
 
@@ -39,7 +39,7 @@ analysis/
 figures/
   paper_figures.ipynb  figure panels; all paths in one configuration cell at the top
   conceptual/          TikZ source of the schematic (Fig. 3)
-data/                  processed empirical tables (deposited separately; see data/README.md)
+data/                  processed empirical tables (available on request; see data/README.md)
 ```
 
 ## Requirements

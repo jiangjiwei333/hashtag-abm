@@ -25,11 +25,11 @@ User ids in the network files are anonymised consecutive integers with no link t
 | `new_adopters_daily.pkl` (26 MB) | `results/` | per hashtag and day, the number of users posting it who did not post it the day before (new adopters; "new users" in the code) | `analysis/new_adopters.py --posts <raw posts>` |
 | `model0_expected_counts_10min.pkl` (1.0 GB) | `results/` | Model-0 expected count `xhat_k(r)` per hashtag and 10-minute window, exposures from the preceding 24 h | `analysis/recompute_expected_counts.py --m-hours 24` |
 
-Both need the raw post table to regenerate; they are deposited so that Fig. 2(e), 4(c), 6(e) and Fig. 5 can be drawn without it.
+Both need the raw post table to regenerate; they are provided together with the tables above so that Fig. 2(e), 4(c), 6(e) and Fig. 5 can be drawn without it.
 
 ## Simulation output
 
-The twelve runs behind Fig. 4, 6, 7 and 9(a) are not deposited (≈4.7 GB); `simulation/parallel_sim.sh` with `SEED=1` regenerates them in about an hour on a multi-core machine (see `simulation/README.md`).
+The twelve runs behind Fig. 4, 6, 7 and 9(a) are not distributed (≈4.7 GB); `simulation/parallel_sim.sh` with `SEED=1` regenerates them in about an hour on a multi-core machine (see `simulation/README.md`).
 
 ## Formats
 
