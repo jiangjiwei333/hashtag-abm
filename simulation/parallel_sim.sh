@@ -34,7 +34,7 @@ DIR="./modules"
 CPP="$DIR/simulation.cpp"
 BIN="$DIR/simulation"
 
-PARALLEL_JOBS=${PARALLEL_JOBS:-65}
+PARALLEL_JOBS=${PARALLEL_JOBS:-4}    # each full-size run needs ~14 GB of RAM; raise this to fit your machine
 SEED=${SEED:-1}
 
 PASS="${1:-all}"
@@ -73,7 +73,6 @@ pass_A() {
 
 # ------------------------------------------------------------------ pass B
 # Model 0 at m=24 on randomised copies of the user relationship network (Fig. 4e).
-# `real_keep_degree` is deliberately not run: it is not shown in the paper.
 pass_B() {
     echo "[B] Model 0: network randomisations (3 runs)"
     for NETWORK in real_to_random real_keep_in_degree real_keep_out_degree; do

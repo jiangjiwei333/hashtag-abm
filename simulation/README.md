@@ -53,18 +53,6 @@ Manual compilation is `g++ -std=c++17 -O3 -mtune=native -march=native modules/si
 
 All results in the paper use `SEED=1`, 397,369 agents and 30 model days.
 
-## Which run produces which figure
-
-| run | figure panels |
-|---|---|
-| A, `m=24` | Fig. 4 (a) (b) (c) (d) |
-| A, all eight memory windows | Fig. 4 (f) |
-| B, three randomised networks | Fig. 4 (e) |
-| C | Fig. 6 (a)--(f), Fig. 7 (a) (b), Fig. 9 (a) |
-
-Fig. 2 and Fig. 5 come from the empirical data only and do not use this code; see
-`../analysis/`.
-
 ## Output
 
 Per run, under `simulation_results/model<MODEL>/`:
@@ -93,10 +81,3 @@ every 10-minute update, giving roughly 150 trajectories per run for Fig. 9(a). T
 selection is deterministic on purpose: drawing it at random would consume random numbers
 in `add_hashtag` and shift the hashtag-side random stream. For Model 0 the file contains
 one value per sampled hashtag, since `d_k` never changes.
-
-## Note on the random seed
-
-The original version of `modules/simulation.cpp` passed an uninitialised `int seed;` to
-`initialize_hashtags(config, seed + 1)`, which is undefined behaviour. It is fixed here to
-`config.seed + 1`. Results are statistically equivalent to earlier runs but not
-bit-identical, because the hashtag-side random stream differs.

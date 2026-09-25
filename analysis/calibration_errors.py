@@ -9,12 +9,8 @@ For one simulation run the four components are
                     (increasing and decreasing sides, logarithmic size bins)
     death_err       RMSE of log deactivation probabilities across usage-count bins
 Across a parameter grid each component is min-max normalised to [0, 1] and the four are summed (err_sum_top4);
-the parameter set with the smallest sum is selected.
-
-NOTE on day slices: the original calibration script compared the last 7 days for usage_err and logb_err, the
-last 20 days for bt_scaling_err and the last 10 days for death_err.  These defaults are kept here
-(--scaling-days, --death-days) so that the published numbers can be reproduced; set all of them to 7 to use a
-uniform 7-day window.
+the parameter set with the smallest sum is selected. All four components are computed from the final --days
+model days of each run (default 7, as in the Methods section) and compared with the 7-day empirical data.
 
 usage:
     python analysis/calibration_errors.py --real data/hashtag_daily_counts.pkl --run output/model1_m84_theta0.007_d013
@@ -34,25 +30,27 @@ from result_analysis import (compare_log_growth_pdf, growth_rate_scaling_errorba
                            log_rmse, next_day_analysis_new, normalize_error, rmse)
 
 
-def compute_errors(sim, real, usage_days=7, logb_days=7, scaling_days=20, death_days=10):
-    """Four error components for one run. `sim`, `real`: daily-count tables (index hashtag, columns days)."""
+def compute_errors(sim, real, days=7):
+    """Four error components for one run. `sim`, `real`: daily-count tables (index hashtag, columns days);
+    only the final `days` columns of `sim` are used."""
     plt.figure()
-    usage_err = ks_distance(real, sim.iloc[:, -usage_days:])
+    sim = sim.iloc[:, -days:]
+    usage_err = ks_distance(real, sim)
 
     bt_sim = np.log10(sim.shift(-1, axis=1) / sim)
     bt_real = np.log10(real.shift(-1, axis=1) / real)
-    logb_err = compare_log_growth_pdf(bt_sim.iloc[:, -logb_days:], bt_real)
+    logb_err = compare_log_growth_pdf(bt_sim, bt_real)
 
     ge_real, ne_real = growth_rate_scaling_errorbar_prepare_data(
         real.fillna(0).T, stationaryPoint=0, base=20, step=0.5, minmal_sample=30, show_detail=False)
     ge_sim, ne_sim = growth_rate_scaling_errorbar_prepare_data(
-        sim.iloc[:, -scaling_days:].fillna(0).T, stationaryPoint=0, base=20, step=0.5, minmal_sample=30, show_detail=False)
+        sim.fillna(0).T, stationaryPoint=0, base=20, step=0.5, minmal_sample=30, show_detail=False)
     ge = pd.merge(ge_real, ge_sim, on='bin', how='left', suffixes=('_real', '_sim'))
     ne = pd.merge(ne_real, ne_sim, on='bin', how='left', suffixes=('_real', '_sim'))
     bt_scaling_err = rmse(ge['std50_real'], ge['std50_sim']) + rmse(ne['std50_real'], ne['std50_sim'])
 
     death_real = next_day_analysis_new(real, logy=True, minvalue=0, return_=True)
-    death_sim = next_day_analysis_new(sim.iloc[:, -death_days:], logy=True, minvalue=0, return_=True, fit_line=False)
+    death_sim = next_day_analysis_new(sim, logy=True, minvalue=0, return_=True, fit_line=False)
     d = pd.merge(death_real, death_sim, on='current_value', how='left', suffixes=('_real', '_sim'))
     death_err = log_rmse(d['death_rate_q2_real'], d['death_rate_q2_sim'])
     plt.close('all')
@@ -111,11 +109,10 @@ def main():
     ap.add_argument('--run', help='one simulation run directory (after postprocess.py)')
     ap.add_argument('--grid', help='directory containing one run directory per parameter set')
     ap.add_argument('--out', default='calibration_errors.csv')
-    ap.add_argument('--scaling-days', type=int, default=20)
-    ap.add_argument('--death-days', type=int, default=10)
+    ap.add_argument('--days', type=int, default=7, help='use the final DAYS model days of each run (Methods: 7)')
     args = ap.parse_args()
     real = pd.read_pickle(args.real)
-    kw = dict(scaling_days=args.scaling_days, death_days=args.death_days)
+    kw = dict(days=args.days)
 
     if args.run:
         sim = pd.read_pickle(os.path.join(args.run, 'daily_counts.pkl'))

@@ -13,11 +13,10 @@ The regression slope of the pooled drift is the empirical counterpart of -theta 
 Selection rule (as in the paper): windows with xhat_k(r) >= --min-expected are reliable; hashtags with at least
 --min-windows reliable windows are kept. The first day of the count table is skipped in the drift analysis.
 
-usage (torch env):
+usage:
     python fig5_contagiousness.py \
         --counts /path/to/hashtag_counts_10min_lcc.pkl \
-        --xhat original=/path/to/tag_likely_df_hour_2011-03-12~2011-03-18_date_hour_10min.pkl \
-               m24=results/model0_expected_counts_10min.pkl m48=results/model0_expected_counts_10min_m48.pkl \
+        --xhat m24=results/model0_expected_counts_10min.pkl \
         --tag save_ibaraki --out-dir results/fig5
 """
 import argparse

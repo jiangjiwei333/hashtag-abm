@@ -3,8 +3,8 @@
 Code for *Agent-Based Model with Decaying Attention Reproducing Hashtag Scaling Laws: Random Multiplicative Growth as a Bridge* (Jiang, Yamada, Takayasu & Takayasu, 2026; under review).
 
 * Code: this repository; releases are archived on Zenodo under the concept DOI https://doi.org/10.5281/zenodo.22873307 (always resolves to the latest release). The paper cites the version DOI of the release it used.
-* Data: the processed tables are available from the corresponding author on request (see `data/README.md`)
-  for the file list and where to place them. The raw tweets are not redistributed.
+* Data: the processed tables are available from the corresponding author on request; `data/README.md`
+  lists the files and where to place them. The raw tweets are not redistributed.
 
 The repository contains
 
@@ -75,13 +75,14 @@ All comparison statistics of the simulations use the **final 7 model days** of e
    ```
 
    `parallel_sim.sh` compiles first and then runs the passes `PARALLEL_JOBS` at a time
-   (default 65). One model day is 24 × 93,626 = 2,247,024 posting events; a 30-day run of
-   the full system (397,369 users) keeps every user's posting history in memory and was
-   executed on a multi-core server. `simulation.sh` post-processes each run into
-   `.npy`/`.pkl` tables automatically. Details, output format and the run-to-panel map are
-   in `simulation/README.md`.
+   (default 4). One model day is 24 × 93,626 = 2,247,024 posting events; a 30-day run of
+   the full system (397,369 users) keeps every user's posting history in memory and needs
+   about 14 GB of RAM and a few hours, so choose `PARALLEL_JOBS` to fit your memory.
+   `simulation.sh` post-processes each run into `.npy`/`.pkl` tables automatically. Details,
+   output format and the run-to-panel map are in `simulation/README.md`.
 
-3. **Effective contagiousness from data** (Fig. 5; needs the restricted post table):
+3. **Effective contagiousness from data** (Fig. 5; needs the restricted post table and the LCC
+   network as an edge table with the original user ids, columns `source`/`target`):
 
    ```bash
    python analysis/recompute_expected_counts.py --posts <posts.pkl> --network <lcc_network.pkl> \
@@ -93,7 +94,7 @@ All comparison statistics of the simulations use the **final 7 model days** of e
    Exposures are the posts of followed users within the preceding $m = 24$ hours, using past
    information only; the analysis starts on 12 March so that every window has a complete history.
 
-4. **Empirical new-user tables** (Fig. 2e, and the empirical series in Fig. 4c / 6e):
+4. **Empirical new-adopter table** (Fig. 2e, and the empirical series in Fig. 4c / 6e):
 
    ```bash
    python analysis/new_adopters.py --posts <posts.pkl> --save-empirical results/new_adopters_daily.pkl
@@ -105,7 +106,7 @@ All comparison statistics of the simulations use the **final 7 model days** of e
 5. **Figures.** Run `figures/paper_figures.ipynb`. Single-panel PDFs are written per panel; the
    multi-panel figures of the paper are assembled from them in a vector editor.
 
-## Model parameters (Table 1)
+## Model parameters
 
 | symbol | meaning | `simulation.sh` argument | value |
 |---|---|---|---|
@@ -119,34 +120,9 @@ All comparison statistics of the simulations use the **final 7 model days** of e
 | $d_0$ | initial $d_k \sim U(0, d_0)$ | 3rd argument | 13 |
 
 Model 0 is the same binary with `LIFE_TIME_TYPE=const_dk` and $d_k \equiv 1$, i.e. adoption weighted by
-exposure counts alone.
-
-## Figure ↔ code
-
-| figure | data / run | code |
-|---|---|---|
-| Fig. 1 | daily count series | notebook |
-| Fig. 2 | empirical daily counts | notebook; `result_analysis.py`, `new_adopters.py` (panel e) |
-| Fig. 3 | – | `figures/conceptual/fig3_model0_schematic.tex` |
-| Fig. 4 | Model 0 runs (passes A and B) | notebook; `new_adopters.py` (panel c) |
-| Fig. 5 | 10-minute counts and expected counts | `recompute_expected_counts.py`, `fig5_contagiousness.py` |
-| Fig. 6 | Model 1 run (pass C) | notebook; `new_adopters.py` (panel e) |
-| Fig. 7 | Model 1 run | `random_multiplicative_process.py`; notebook |
-| Fig. 8 | network and hourly counts | notebook |
-| Fig. 9 | Model 1 run (`diffu_value/`), calibration grid | notebook; `calibration_errors.py` |
-| Table 1 | calibration grid | `calibration_errors.py` |
-
-## Notes on reproducibility
-
-* The simulation code here is the code that produced the published results, not a reimplementation.
-  One change was made relative to the version used during the research: the original
-  `modules/simulation.cpp` passed an uninitialised `int seed;` to `initialize_hashtags(config, seed + 1)`,
-  which is undefined behaviour; it now passes `config.seed + 1`. Runs are therefore statistically
-  equivalent to, but not bit-identical with, results produced before that fix.
-* No intra-day activity cycle is imposed. One model day is a fixed number of events, matching the
-  Methods section "Model time scale"; the 10-minute windows that set the update interval of $d_k(r)$
-  are one sixth of a model hour each.
-* The $\theta \times d_0$ calibration grid behind Fig. 9(b) and Table 1 was run before the seed fix.
+exposure counts alone. $m$, $\theta$ and $d_0$ were calibrated by the grid search of Table 1 in the paper
+($m \in \{24, \ldots, 120\}$ h, $\theta \in \{0.001, \ldots, 0.031\}$, $d_0 \in \{1, \ldots, 30\}$); the grid runs
+themselves are not part of the repository, `calibration_errors.py` evaluates the error components of a run.
 
 ## License
 

@@ -13,7 +13,7 @@ Place them at the paths given here (the defaults in the notebook's configuration
 | `hashtag_counts_daily.pkl` (25 MB) | `simulation/real_data/` | daily usage count `x_k(t)`: index = hashtag (370,473), columns = 7 days, 11–17 March 2011; NaN = not used that day | Fig. 1, 2, 4, 6, 7; check plots |
 | `hashtag_counts_hourly.pkl` (481 MB) | `simulation/real_data/` | hourly counts `x_k(h)`, 168 columns | Fig. 1 |
 | `hashtag_counts_10min_lcc.pkl` (1.3 GB) | `simulation/real_data/` | 10-minute counts of posts by users in the network's largest connected component (LCC) | Fig. 5 |
-| `retweet_network/network_empirical.txt` (144 MB) | `simulation/real_data/retweet_network/` | user relationship network, one directed link `i j` per line (whitespace separated, 0-based ids; `i` follows `j`); 397,369 users, 12,125,312 links | simulation, Fig. 8a |
+| `retweet_network/network_empirical.txt` (144 MB) | `simulation/real_data/retweet_network/` | user relationship network, one directed link `i j` per line (whitespace separated, 0-based ids; `i` retweeted `j`, i.e. `i` is exposed to `j`'s posts); 397,369 users, 12,125,312 links | simulation, Fig. 8a |
 | `retweet_network/network_shuffled_random.txt`, `network_shuffled_keep_in_degree.txt`, `network_shuffled_keep_out_degree.txt` (≈150 MB each) | same | randomised networks for Fig. 4(e): complete rewiring, in-degree-preserving and out-degree-preserving shuffles | simulation |
 
 User ids in the network files are anonymised consecutive integers with no link to the original accounts.

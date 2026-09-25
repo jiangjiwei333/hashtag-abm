@@ -20,12 +20,13 @@ The paths are hard coded in `modules/initialize/initialize.h`, function `initial
 i j
 ```
 
-read as "user `i` follows user `j`", i.e. `i` is exposed to `j`'s posts. The empirical
+read as "user `i` retweeted user `j`", i.e. `i` is exposed to `j`'s posts (a directed edge `i -> j` in the Methods). The empirical
 network has 397,369 nodes and 12,125,312 links, and is the largest connected component of
 the retweet network described in the Methods section of the paper.
 
-The randomised variants are generated from the empirical network; see
-`../../analysis/` and the Methods section "User Relationship Network".
+The randomised variants are shuffled copies of the empirical network (complete rewiring preserving
+the numbers of nodes and links; in-degree-preserving and out-degree-preserving shuffles, see the
+legend of Fig. 4(e)); they are provided together with the empirical network.
 
 ## 2. Empirical daily counts — required only by the check plots
 

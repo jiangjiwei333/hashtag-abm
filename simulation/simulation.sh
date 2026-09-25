@@ -29,7 +29,7 @@ fi
 
 # ------------------- python result processor ---------------------
 # Needs numpy + pandas. Set PYTHON explicitly if the default interpreter lacks them,
-# e.g.  PYTHON=$(conda run -n torch which python) ./simulation.sh ...
+# e.g.  PYTHON=$(conda run -n hashtag-abm which python) ./simulation.sh ...
 PYTHON=${PYTHON:-$(command -v python >/dev/null 2>&1 && echo python || echo python3)}
 if ! $PYTHON -c 'import numpy, pandas' >/dev/null 2>&1; then
     echo "warning: '$PYTHON' has no numpy/pandas -- the simulation will still run and write"
