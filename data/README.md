@@ -1,10 +1,10 @@
 # Data
 
 The raw tweets cannot be redistributed under the X (formerly Twitter) Developer Agreement and
-Policy and are **not** part of this repository or of the data deposit. Every figure and
-number in the paper can be reproduced from the processed tables below, which are archived on
-Zenodo: **[DOI to be assigned]**. The tables are too large for GitHub; download them from
-Zenodo and place them at the paths given here (the defaults in the notebook's configuration cell).
+Policy and are **not** part of this repository. Every figure and number in the paper can be
+reproduced from the processed (aggregated and anonymized) tables below, which are available from
+the corresponding author, Misako Takayasu (takayasu@comp.isct.ac.jp), upon reasonable request.
+Place them at the paths given here (the defaults in the notebook's configuration cell).
 
 ## Empirical tables
 
