@@ -61,9 +61,9 @@ std::vector<agent> initialize_agents(const SimulationConfig& config,
 
 // Load the user relationship network. Options used in the paper:
 //   real                  empirical network (LCC of the retweet network)
-//   real_to_random        complete random rewiring, same numbers of nodes and links   (Fig. 4e "random")
-//   real_keep_in_degree   shuffle preserving in-degrees                              (Fig. 4e "keep in")
-//   real_keep_out_degree  shuffle preserving out-degrees                             (Fig. 4e "keep out")
+//   real_to_random        complete random rewiring, same numbers of nodes and links   (Fig. 5e "random")
+//   real_keep_in_degree   shuffle preserving in-degrees                              (Fig. 5e "keep in")
+//   real_keep_out_degree  shuffle preserving out-degrees                             (Fig. 5e "keep out")
 std::vector<int> initialize_network(std::string network){
     std::vector<int> network_links_vc;
     std::cout << "Loading Network(" << network << ")... " << std::flush;

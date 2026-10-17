@@ -45,7 +45,7 @@ void simulation(SimulationConfig& config){
     std::cout << std::endl;
 
     /************************ Output ************************/
-    // Sampled d_k(r) trajectories for Fig. 9(a); empty unless lifetype == "ou".
+    // Sampled d_k(r) trajectories for Fig. 7(a); empty unless lifetype == "ou".
     hashtag_updater.output_diffu_sample_series(config.diffu_sample_path, false);
 
     auto toc = std::chrono::steady_clock::now();

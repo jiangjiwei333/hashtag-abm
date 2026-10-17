@@ -851,7 +851,7 @@ def find_longest_continuous_subseq(series):
     return best_subseq
 
 
-# ----------------------------------------------------------------------------- autocorrelation (Fig. 7b)
+# ----------------------------------------------------------------------------- autocorrelation (Fig. 9b)
 def batch_autocorr(df, min_length=3, max_lags=5):
     """Autocorrelation of every row up to max_lags, computed on its longest non-NaN run."""
     results = []
@@ -881,10 +881,10 @@ def batch_autocorr(df, min_length=3, max_lags=5):
     return pd.DataFrame(results, index=df.index, columns=columns)
 
 
-# ----------------------------------------------------------------------------- effective contagiousness (Fig. 5)
+# ----------------------------------------------------------------------------- effective contagiousness (Fig. 6)
 def visulize_diffusion_series_paper(hashtag_df_hour_lcc, tag_likely_df_hour, diffu_df, 
                               name, hashtag_df_noise_lcc = None):
-    # observed count, expected count and effective contagiousness of one hashtag (Fig. 5a)
+    # observed count, expected count and effective contagiousness of one hashtag (Fig. 6a)
     # 1. time series
     plt.figure(figsize=(12, 6))
     ax1 = plt.subplot(2, 1, 1)

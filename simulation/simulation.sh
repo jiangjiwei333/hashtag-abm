@@ -94,7 +94,7 @@ create_directory "$PATH_RESULT"
 create_directory "$PATH_FIG"
 create_directory "$PATH_ERROR_SAVE"
 create_directory "$PATH_XT"
-create_directory "$PATH_DIFFU_SAMPLE"        # Fig. 9(a); was missing, so the file was never written
+create_directory "$PATH_DIFFU_SAMPLE"        # Fig. 7(a); was missing, so the file was never written
 create_directory "$PATH_NEW_USERS"
 
 # SKIP_SIM=1 re-runs only the python post-processing on an existing result file

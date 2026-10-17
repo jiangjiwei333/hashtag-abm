@@ -1,11 +1,11 @@
-"""fig5_contagiousness.py -- effective contagiousness d_k(r) = x_k(r) / xhat_k(r) and the Fig. 5 panels,
+"""effective_contagiousness.py -- effective contagiousness d_k(r) = x_k(r) / xhat_k(r) and the Fig. 6 panels,
 for one or several expected-count tables side by side (e.g. the original table and the recomputed ones).
 
 For every variant it writes to <out-dir>/<label>/:
-    series_<tag>.pdf        Fig. 5(a): x_k(r), xhat_k(r) and d_k(r) for one hashtag
-    drift_<tag>.pdf         Fig. 5(b): d_k(r+1) - d_k(r) versus d_k(r) for that hashtag, binned medians + regression
-    drift_all.pdf           Fig. 5(c): the same pooled over all reliable hashtags
-    potential_all.pdf       Fig. 5(d): potential U(d) from the pooled drift
+    series_<tag>.pdf        Fig. 6(a): x_k(r), xhat_k(r) and d_k(r) for one hashtag
+    drift_<tag>.pdf         Fig. 6(b): d_k(r+1) - d_k(r) versus d_k(r) for that hashtag, binned medians + regression
+    drift_all.pdf           Fig. 6(c): the same pooled over all reliable hashtags
+    potential_all.pdf       Fig. 6(d): potential U(d) from the pooled drift
     d_table.pkl             the d_k(r) table (index hashtag, columns 10-minute windows; NaN = unreliable window)
 and prints a summary line (number of reliable hashtags, regression slope, intercept, zero crossing).
 The regression slope of the pooled drift is the empirical counterpart of -theta per 10-minute window.
@@ -14,7 +14,7 @@ Selection rule (as in the paper): windows with xhat_k(r) >= --min-expected are r
 --min-windows reliable windows are kept. The first day of the count table is skipped in the drift analysis.
 
 usage:
-    python fig5_contagiousness.py \
+    python effective_contagiousness.py \
         --counts /path/to/hashtag_counts_10min_lcc.pkl \
         --xhat m24=results/model0_expected_counts_10min.pkl \
         --tag save_ibaraki --out-dir results/fig5

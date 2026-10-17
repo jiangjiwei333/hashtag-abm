@@ -1,5 +1,5 @@
 """random_multiplicative_process.py -- macroscopic random multiplicative process (Results, "Connection from
-Micro to Macro Model"; Fig. 7a).
+Micro to Macro Model"; Fig. 9a).
 
     x_k(t+1) = b_k(t | x_k(t)) x_k(t) + f_k(t)
 

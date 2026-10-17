@@ -10,9 +10,9 @@ The paths are hard coded in `modules/initialize/initialize.h`, function `initial
 | `NETWORK` argument | file | used for |
 |---|---|---|
 | `real` | `retweet_network/network_empirical.txt` | Model 0 and Model 1 main runs, memory sweep |
-| `real_to_random` | `retweet_network/network_shuffled_random.txt` | Fig. 4(e), `random` |
-| `real_keep_in_degree` | `retweet_network/network_shuffled_keep_in_degree.txt` | Fig. 4(e), `keep in` |
-| `real_keep_out_degree` | `retweet_network/network_shuffled_keep_out_degree.txt` | Fig. 4(e), `keep out` |
+| `real_to_random` | `retweet_network/network_shuffled_random.txt` | Fig. 5(e), `random` |
+| `real_keep_in_degree` | `retweet_network/network_shuffled_keep_in_degree.txt` | Fig. 5(e), `keep in` |
+| `real_keep_out_degree` | `retweet_network/network_shuffled_keep_out_degree.txt` | Fig. 5(e), `keep out` |
 
 **Format.** One directed link per line, two whitespace-separated 0-based integer user ids
 
@@ -26,7 +26,7 @@ the retweet network described in the Methods section of the paper.
 
 The randomised variants are shuffled copies of the empirical network (complete rewiring preserving
 the numbers of nodes and links; in-degree-preserving and out-degree-preserving shuffles, see the
-legend of Fig. 4(e)); they are provided together with the empirical network.
+legend of Fig. 5(e)); they are provided together with the empirical network.
 
 ## 2. Empirical daily counts — required only by the check plots
 

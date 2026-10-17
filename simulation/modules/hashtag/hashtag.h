@@ -59,7 +59,7 @@ public:
             std::exit(1);
         }
         hashtag_diffu_vec.push_back(diffu_value);
-        // Record a small, deterministic sample of d_k(r) trajectories for Fig. 9(a).
+        // Record a small, deterministic sample of d_k(r) trajectories for Fig. 7(a).
         // Deterministic on purpose: the original `if (uni(mt) < 0.0001)` consumed a random
         // draw on every call and therefore shifted the hashtag-side random stream.
         if (tag % 10000 == 0) diffu_sample_map[tag].push_back(diffu_value);
@@ -73,7 +73,7 @@ public:
             double diffusion =  normal(mt);
             hashtag_diffu_vec[tag_index] += (drift + diffusion);
         }
-        for (auto& [tag, series] : diffu_sample_map) {   // Fig. 9(a): sampled trajectories
+        for (auto& [tag, series] : diffu_sample_map) {   // Fig. 7(a): sampled trajectories
             series.push_back(hashtag_diffu_vec[tag]);
         }
     }

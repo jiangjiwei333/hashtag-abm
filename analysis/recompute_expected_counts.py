@@ -3,7 +3,7 @@ using the exposure rule of the paper: exposures are the posts of followed users 
 (0 <= t_now - t <= m h, no look-ahead).
 
 Output has the same layout as the original tag_likely_df_hour_*.pkl table (index = hashtag, columns = window
-start time, value = xhat_k(r), zeros filled) so that it can be used as a drop-in replacement in the Fig. 5
+start time, value = xhat_k(r), zeros filled) so that it can be used as a drop-in replacement in the Fig. 6
 analysis. A companion CSV lists, per window, the number of LCC posts, the number with a non-empty exposure
 set (= column sum) and the number whose own hashtag was among the exposed ones.
 

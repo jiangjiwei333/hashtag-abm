@@ -1,5 +1,4 @@
-"""calibration_errors.py -- error components used to calibrate Model 1 (Methods, "Model 1 Simulation
-and Parameter Calibration") and to draw the error heat map (Fig. 9b).
+"""calibration_errors.py -- error components used to calibrate Model 1 (Sec. V B, "Parameter calibration") and to draw the error heat map (Fig. 7b).
 
 For one simulation run the four components are
     usage_err       Kolmogorov-Smirnov distance between the empirical and simulated daily usage-count distributions
@@ -89,7 +88,7 @@ def grid_errors(real, grid_dir, **kw):
 
 
 def error_heatmap(df, value='err_sum_top4', out=None):
-    """Heat map of the total normalised error over (theta, d0) -- Fig. 9(b)."""
+    """Heat map of the total normalised error over (theta, d0) -- Fig. 7(b)."""
     import seaborn as sns
     pivot = df.pivot_table(index='theta', columns='d0', values=value, aggfunc='mean')
     plt.figure(figsize=(8, 6))

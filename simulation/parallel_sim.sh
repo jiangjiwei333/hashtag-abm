@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# parallel_sim.sh -- run the simulations behind Fig. 4, Fig. 6, Fig. 7 and Fig. 9(a) of the paper.
+# parallel_sim.sh -- run the simulations behind Fig. 5, Fig. 7(a), Fig. 8 and Fig. 9 of the paper.
 #
 #   chmod +x parallel_sim.sh
 #   ./parallel_sim.sh A        # Model 0: main run + memory-window sweep   (8 runs)
@@ -18,10 +18,10 @@
 # (simulation_results/model<MODEL>/); the C++ never reads it.
 #
 # Which run feeds which figure panel:
-#   A, m=24            -> Fig. 4 (a) (b) (c) (d)
-#   A, all 8 windows   -> Fig. 4 (f)
-#   B, 3 networks      -> Fig. 4 (e)
-#   C                  -> Fig. 6 (a)-(f), Fig. 7 (a) (b), Fig. 9 (a)
+#   A, m=24            -> Fig. 5 (a) (b) (c) (d)
+#   A, all 8 windows   -> Fig. 5 (f)
+#   B, 3 networks      -> Fig. 5 (e)
+#   C                  -> Fig. 7 (a), Fig. 8 (a)-(f), Fig. 9 (a) (b)
 #
 # Output per run (see simulation.sh):
 #   simulation_results/model<M>/results/<FILE_NAME>.txt        daily usage counts x_k(t)
@@ -72,7 +72,7 @@ pass_A() {
 }
 
 # ------------------------------------------------------------------ pass B
-# Model 0 at m=24 on randomised copies of the user relationship network (Fig. 4e).
+# Model 0 at m=24 on randomised copies of the user relationship network (Fig. 5e).
 pass_B() {
     echo "[B] Model 0: network randomisations (3 runs)"
     for NETWORK in real_to_random real_keep_in_degree real_keep_out_degree; do

@@ -1,4 +1,4 @@
-"""new_adopters.py -- next-day new adopters n_k^new(t+1) versus current usage x_k(t)  (Fig. 2e / 4c / 6e).
+"""new_adopters.py -- next-day new adopters n_k^new(t+1) versus current usage x_k(t)  (Fig. 2e / 5c / 8e).
 
 A new adopter of hashtag k on day t+1 ("new user" in the code identifiers) is a user who posts k on
 day t+1 but did not post it on day t. The one-day horizon is the same for the data and for the model,

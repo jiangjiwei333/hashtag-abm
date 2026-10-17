@@ -29,12 +29,12 @@ simulation/            C++ agent-based model -- see simulation/README.md
 analysis/
   result_analysis.py              statistics and plotting routines behind the figure panels
                                   (usage distribution, growth rates, deactivation, d_k(r) drift and potential, autocorrelation)
-  new_adopters.py                 next-day new adopters n_k^new(t+1) vs x_k(t)  (Fig. 2e, 4c, 6e)
+  new_adopters.py                 next-day new adopters n_k^new(t+1) vs x_k(t)  (Fig. 2e, 5c, 8e)
   recompute_expected_counts.py    Model-0 expected counts xhat_k(r), trailing m-hour exposure window
   check_expected_counts.py        loaders and consistency checks for the expected-count tables
-  fig5_contagiousness.py          d_k(r) = x_k(r)/xhat_k(r) and the Fig. 5 panels
-  calibration_errors.py           error components and the grid summary (Fig. 9b)
-  random_multiplicative_process.py  macroscopic RMP driven by the simulated growth-rate pool (Fig. 7)
+  effective_contagiousness.py          d_k(r) = x_k(r)/xhat_k(r) and the Fig. 6 panels
+  calibration_errors.py           error components and the grid summary (Fig. 7b)
+  random_multiplicative_process.py  macroscopic RMP driven by the simulated growth-rate pool (Fig. 9)
   postprocess.py                  raw simulation output -> daily-count tables
 figures/
   paper_figures.ipynb  figure panels; all paths in one configuration cell at the top
@@ -81,20 +81,20 @@ All comparison statistics of the simulations use the **final 7 model days** of e
    `simulation.sh` post-processes each run into `.npy`/`.pkl` tables automatically. Details,
    output format and the run-to-panel map are in `simulation/README.md`.
 
-3. **Effective contagiousness from data** (Fig. 5; needs the restricted post table and the LCC
+3. **Effective contagiousness from data** (Fig. 6; needs the restricted post table and the LCC
    network as an edge table with the original user ids, columns `source`/`target`):
 
    ```bash
    python analysis/recompute_expected_counts.py --posts <posts.pkl> --network <lcc_network.pkl> \
           --m-hours 24 --begin "2011-03-12 00:00" --end "2011-03-18 00:00" --out results/model0_expected_counts_10min.pkl
-   python analysis/fig5_contagiousness.py --counts <hashtag_counts_10min_lcc.pkl> \
+   python analysis/effective_contagiousness.py --counts <hashtag_counts_10min_lcc.pkl> \
           --xhat m24=results/model0_expected_counts_10min.pkl --tag save_ibaraki --out-dir results/fig5
    ```
 
    Exposures are the posts of followed users within the preceding $m = 24$ hours, using past
    information only; the analysis starts on 12 March so that every window has a complete history.
 
-4. **Empirical new-adopter table** (Fig. 2e, and the empirical series in Fig. 4c / 6e):
+4. **Empirical new-adopter table** (Fig. 2e, and the empirical series in Fig. 5c / 8e):
 
    ```bash
    python analysis/new_adopters.py --posts <posts.pkl> --save-empirical results/new_adopters_daily.pkl
@@ -113,7 +113,7 @@ All comparison statistics of the simulations use the **final 7 model days** of e
 | $N$ | number of users | `N_AGENTS` (in the script) | 397,369 |
 | – | events per model hour / day | `ONE_HOUR` | 93,626 / 2,247,024 |
 | $p$ | probability of creating a new hashtag | `P_NEW` | 0.0218 (empirical) |
-| $m$ | memory window (h) | 2nd argument | 84 (Model 1); 24 for the Model 0 runs of Fig. 4 |
+| $m$ | memory window (h) | 2nd argument | 84 (Model 1); 24 for the Model 0 runs of Fig. 5 |
 | $\theta$ | decay rate of $d_k$ | 4th argument | 0.007 |
 | $\mu$ | long-run level of $d_k$ | 5th argument | 0 |
 | $\sigma$ | noise amplitude of $d_k$ | 6th argument | 0.1 (fixes the scale) |

@@ -1,7 +1,7 @@
 # Agent-based simulation (Model 0 and Model 1)
 
-Event-level C++ simulation of hashtag posting used for Fig. 4, Fig. 6, Fig. 7 and
-Fig. 9(a) of the paper. This is the code that produced the published results.
+Event-level C++ simulation of hashtag posting used for Fig. 5, Fig. 7(a), Fig. 8 and
+Fig. 9 of the paper. This is the code that produced the published results.
 
 Both models share one engine. At every event an agent either creates a new hashtag
 (probability `p_new`) or adopts one of the hashtags it has been exposed to through the
@@ -62,7 +62,7 @@ Per run, under `simulation_results/model<MODEL>/`:
 | `results/<name>.txt` (`.pkl` after post-processing) | daily usage counts `x_k(t)`, one line per saved day, `tag,count,tag,count,...` |
 | `new_users/<name>.txt` | per-day count of users posting `k` who did not post it on the previous day |
 | `xt/<name>.txt` | 10-minute-resolution counts |
-| `diffu_value/sample<name>.txt` | sampled `d_k(r)` trajectories (Fig. 9a) |
+| `diffu_value/sample<name>.txt` | sampled `d_k(r)` trajectories (Fig. 7a) |
 | `figs/`, `error/` | automatic check plots and calibration error lines, not used in the paper |
 
 Only the last `N_SAVE_FROM_LAST_STEP` days are written; the new-user file is row-aligned
@@ -77,7 +77,7 @@ definition is used because its one-day horizon is identical for the data and the
 versus 30 model days). The empirical counterpart is `analysis/new_adopters.py --posts ...`.
 
 **Sampled trajectories.** Hashtags with `tag % 10000 == 0` have their `d_k(r)` recorded at
-every 10-minute update, giving roughly 150 trajectories per run for Fig. 9(a). The
+every 10-minute update, giving roughly 150 trajectories per run for Fig. 7(a). The
 selection is deterministic on purpose: drawing it at random would consume random numbers
 in `add_hashtag` and shift the hashtag-side random stream. For Model 0 the file contains
 one value per sampled hashtag, since `d_k` never changes.
